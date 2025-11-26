@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>💀 Донат | Хакерский стиль 💀</title>
+<title>💀 Донат | krek991 💀</title>
 <style>
   html, body {
     margin: 0;
@@ -26,22 +26,38 @@
   }
 
   .overlay h1 {
-    font-size: 2.5em;
-    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-    margin-bottom: 30px;
+    font-size: 3em;
+    text-shadow: 0 0 15px #0f0, 0 0 30px #0f0;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+  }
+
+  .overlay h1:hover {
+    transform: scale(1.05);
+  }
+
+  .description {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px #0f0;
+    transition: transform 0.3s ease;
+  }
+
+  .description:hover {
+    transform: scale(1.05);
   }
 
   .donate-button {
     display: block;
-    width: 260px;
-    padding: 15px;
-    margin: 15px auto;
+    width: 320px;
+    padding: 20px;
+    margin: 20px auto;
     background: rgba(0,0,0,0.8);
     color: #0f0;
     text-decoration: none;
     border: 2px solid #0f0;
     border-radius: 12px;
-    font-size: 1.2em;
+    font-size: 1.5em;
     text-shadow: 0 0 5px #0f0;
     transition: all 0.3s ease;
   }
@@ -49,8 +65,8 @@
   .donate-button:hover {
     background: #0f0;
     color: #010101;
-    box-shadow: 0 0 20px #0f0, 0 0 40px #0f0 inset;
-    transform: scale(1.05);
+    box-shadow: 0 0 35px #0f0, 0 0 50px #0f0 inset;
+    transform: scale(1.15);
   }
 
   footer {
@@ -58,7 +74,7 @@
     bottom: 20px;
     width: 100%;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1.2em;
     color: #0f0;
     text-shadow: 0 0 5px #0f0;
   }
@@ -70,13 +86,15 @@
 
 <div class="overlay">
   <h1>💀 Выбери сервис для доната 💀</h1>
+  <p class="description">Поддержи стрим на Twitch: krek991 💾</p>
+
   <a class="donate-button" href="https://donatego.com.ua/yourprofile" target="_blank">💸 Donate GO</a>
   <a class="donate-button" href="https://donatik.ua/yourprofile" target="_blank">💎 Donatik</a>
   <a class="donate-button" href="https://nowpayments.io/yourprofile" target="_blank">🪙 Крипта (NOWPayments)</a>
   <a class="donate-button" href="https://streamlabs.com/yourprofile" target="_blank">⚡ Streamlabs</a>
 </div>
 
-<footer>🖤 Хакерский стиль | Twitch</footer>
+<footer>🖤 Twitch: krek991</footer>
 
 <script>
 const canvas = document.getElementById("matrixCanvas");
@@ -86,7 +104,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
-const fontSize = 16;
+const fontSize = 14; // чуть меньше для плотности
 const columns = canvas.width / fontSize;
 const drops = [];
 
@@ -121,3 +139,4 @@ window.addEventListener("resize", () => {
 
 </body>
 </html>
+
