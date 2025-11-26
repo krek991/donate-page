@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>💀 Донат | Хакерский стиль 💀</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+    font-family: monospace;
+    color: #0f0;
+  }
+
+  canvas {
+    display: block;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .overlay h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+    margin-bottom: 30px;
+  }
+
+  .donate-button {
+    display: block;
+    width: 260px;
+    padding: 15px;
+    margin: 15px auto;
+    background: rgba(0,0,0,0.8);
+    color: #0f0;
+    text-decoration: none;
+    border: 2px solid #0f0;
+    border-radius: 12px;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px #0f0;
+    transition: all 0.3s ease;
+  }
+
+  .donate-button:hover {
+    background: #0f0;
+    color: #010101;
+    box-shadow: 0 0 20px #0f0, 0 0 40px #0f0 inset;
+    transform: scale(1.05);
+  }
+
+  footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="matrixCanvas"></canvas>
+
+<div class="overlay">
+  <h1>💀 Выбери сервис для доната 💀</h1>
+  <a class="donate-button" href="https://donatego.com.ua/yourprofile" target="_blank">💸 Donate GO</a>
+  <a class="donate-button" href="https://donatik.ua/yourprofile" target="_blank">💎 Donatik</a>
+  <a class="donate-button" href="https://nowpayments.io/yourprofile" target="_blank">🪙 Крипта (NOWPayments)</a>
+  <a class="donate-button" href="https://streamlabs.com/yourprofile" target="_blank">⚡ Streamlabs</a>
+</div>
+
+<footer>🖤 Хакерский стиль | Twitch</footer>
+
+<script>
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+  drops[x] = Math.random() * canvas.height;
+
+function draw() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+      drops[i] = 0;
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 50);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
