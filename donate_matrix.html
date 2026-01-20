@@ -98,9 +98,9 @@
     💸 Streamlabs — PLN
   </a>
 
-  <!-- Третья кнопка: Streamlabs RUB -->
-  <a class="donate-button" href="https://streamlabs.com/krek991/tip" target="_blank">
-    💸 Streamlabs — RUB
+  <!-- Третья кнопка: DonationAlerts RUB -->
+  <a class="donate-button" href="https://www.donationalerts.com/r/krek991" target="_blank">
+    💸 DonationAlerts — RUB
   </a>
 </div>
 
@@ -118,8 +118,9 @@ const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = [];
 
-for(let x = 0; x < columns; x++)
+for (let x = 0; x < columns; x++) {
   drops[x] = Math.random() * canvas.height;
+}
 
 function draw() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -128,13 +129,13 @@ function draw() {
   ctx.fillStyle = "#0f0";
   ctx.font = fontSize + "px monospace";
 
-  for(let i = 0; i < drops.length; i++) {
+  for (let i = 0; i < drops.length; i++) {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
-
+    }
     drops[i]++;
   }
 }
