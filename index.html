@@ -19,16 +19,33 @@ body {
     position: relative;
 }
 
-/* 🔥 Фон с мандитом и падающими деньгами, растянутый 16:9 */
+/* 🔥 Ночной город, криминальная атмосфера GTA через CSS */
 .background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('A_digital_painting_in_the_style_of_Grand_Theft_Aut.png') no-repeat center top;
-    background-size: cover; /* растягиваем на весь экран */
+    background: linear-gradient(to top, #0d0d0d 0%, #1a1a1a 50%, #111111 100%);
     z-index: -3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Добавим простые "неоновые здания" */
+.background::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle, #ff004d 2px, transparent 2px) 0 0,
+        radial-gradient(circle, #00ffff 2px, transparent 2px) 50px 50px;
+    background-size: 100px 100px;
+    opacity: 0.1;
+    z-index: -1;
 }
 
 /* Градиент затемнения */
@@ -38,7 +55,7 @@ body {
     left:0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 80%);
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 80%);
     z-index: -2;
 }
 
@@ -63,17 +80,131 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: fadeIn 1.2s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 48px;
     font-weight: 900;
     letter-spacing: 2px;
     text-shadow: 0 0 20px rgba(0,0,0,0.9);
-    margin-b
+    margin-bottom: 30px;
+}
+
+/* 💰 Кнопки */
+.button {
+    width: 250px;
+    padding: 18px;
+    margin: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+/* DonationAlerts */
+.da {
+    background: linear-gradient(45deg, #ff7a00, #ff3c00);
+    box-shadow: 0 0 20px rgba(255,100,0,0.8);
+}
+
+/* DonatePay */
+.dp {
+    background: linear-gradient(45deg, #7a00ff, #b000ff);
+    box-shadow: 0 0 20px rgba(150,0,255,0.8);
+}
+
+/* Hover эффект */
+.button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(255,255,255,0.9);
+}
+
+/* Футер */
+.footer {
+    margin-top: 50px;
+    font-size: 22px;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+/* Адаптация */
+@media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    .button { width: 80%; font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="overlay"></div>
+<canvas id="moneyCanvas"></canvas>
+
+<div class="content">
+    <h1>💰 chip3625 | Поддержите стримера 🖤</h1>
+
+    <a href="https://www.donationalerts.com/r/mrsaxar_" class="button da" target="_blank">
+        ❤️ DonationAlerts
+    </a>
+
+    <a href="https://donatepay.eu/don/39957" class="button dp" target="_blank">
+        💜 DonatePay
+    </a>
+
+    <div class="footer">
+        🎮 TV: chip3625
+    </div>
+</div>
+
+<script>
+// JS для падающих денег
+const canvas = document.getElementById('moneyCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Ты сам подставишь картинку денег
+const moneyImg = new Image();
+moneyImg.src = 'money.png'; // путь к твоей картинке денег
+
+const moneyArray = [];
+const moneyCount = 50;
+
+for(let i=0; i<moneyCount; i++){
+    moneyArray.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 1 + Math.random() * 3,
+        size: 20 + Math.random() * 30
+    });
+}
+
+function drawMoney(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0; i<moneyArray.length; i++){
+        let m = moneyArray[i];
+        ctx.drawImage(moneyImg, m.x, m.y, m.size, m.size/2);
+        m.y += m.speed;
+        if(m.y > canvas.height){
+            m.y = -20;
+            m.x = Math.random() * canvas.width;
+        }
+    }
+    requestAnimationFrame(drawMoney);
+}
+
+moneyImg.onload = drawMoney;
+
+window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
