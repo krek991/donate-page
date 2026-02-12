@@ -3,80 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chip3625 Donate</title>
+<title>chip3625 | Donate</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     height: 100vh;
     overflow: hidden;
+    color: white;
 }
 
-/* КОНТЕЙНЕР */
-.wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-}
-
-/* ФОН НА ВЕСЬ ЭКРАН БЕЗ ЧЁРНЫХ ПОЛОС */
-.wrapper img {
-    position: absolute;
+/* 🔥 GTA стиль фон */
+.background {
+    position: fixed;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Заполняет экран полностью */
+    background: linear-gradient(to top right, #1a1a1a 20%, #ff6a00 60%, #ffb347);
 }
 
-/* КЛИКАБЕЛЬНЫЕ ЗОНЫ */
-.link {
-    position: absolute;
-    border-radius: 20px;
+/* Градиент затемнения */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 80%);
+}
+
+/* Контент */
+.content {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+
+.subtitle {
+    font-size: 28px;
+    margin: 20px 0 50px;
+    opacity: 0.9;
+}
+
+/* 💰 КНОПКИ */
+.button {
+    width: 420px;
+    padding: 22px;
+    margin: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
     transition: 0.3s;
+    display: inline-block;
 }
-
-/* 🔥 Позиции в процентах (адаптив под 1920x1080) */
 
 /* DonationAlerts */
-.donationalerts {
-    width: 22%;
-    height: 8%;
-    left: 39%;
-    top: 58%;
+.da {
+    background: linear-gradient(45deg, #ff7a00, #ff3c00);
+    box-shadow: 0 0 25px rgba(255,100,0,0.8);
 }
 
 /* DonatePay */
-.donatepay {
-    width: 22%;
-    height: 8%;
-    left: 39%;
-    top: 69%;
+.dp {
+    background: linear-gradient(45deg, #7a00ff, #b000ff);
+    box-shadow: 0 0 25px rgba(150,0,255,0.8);
 }
 
 /* Hover эффект */
-.link:hover {
-    box-shadow: 0 0 40px rgba(255,255,255,0.9);
+.button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(255,255,255,0.9);
+}
+
+/* Twitch текст */
+.footer {
+    margin-top: 60px;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+/* Адаптация */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 48px;
+    }
+
+    .button {
+        width: 85%;
+        font-size: 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="background"></div>
+<div class="overlay"></div>
 
-    <img src="bg.PNG" alt="Donate Page">
+<div class="content">
+
+    <h1>💰 chip3625 💰</h1>
+    <div class="subtitle">Поддержи стримера в GTA 🖤</div>
 
     <a href="https://www.donationalerts.com/r/mrsaxar_" 
-       class="link donationalerts" 
-       target="_blank"></a>
+       class="button da" 
+       target="_blank">
+        ❤️ DonationAlerts
+    </a>
 
     <a href="https://donatepay.eu/don/39957" 
-       class="link donatepay" 
-       target="_blank"></a>
+       class="button dp" 
+       target="_blank">
+        💜 DonatePay
+    </a>
+
+    <div class="footer">
+        🎮 Twitch: chip3625 | Majestic RolePlay
+    </div>
 
 </div>
 
