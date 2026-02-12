@@ -4,89 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>chip3625 | GTA Majestic</title>
+
 <style>
-* {
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body {
+body{
     height:100vh;
-    width:100%;
-    font-family: Arial, Helvetica, sans-serif;
+    background:url("bg.png") no-repeat center center/cover;
     display:flex;
     justify-content:center;
     align-items:center;
-    position: relative;
-    /* Фон через Base64, Full HD */
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwAAAAIACAYAAAC+Vf2lAAA...") no-repeat center center/cover;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 /* Контейнер кнопок */
 .buttons{
     position:absolute;
-    bottom:12%;
+    bottom:18%;
     display:flex;
     flex-direction:column;
-    gap:20px;
-    align-items:center;
+    gap:25px;
 }
 
 /* Общий стиль кнопок */
 .btn{
-    width:300px;
+    width:350px;
     padding:18px;
     text-align:center;
-    font-size:20px;
+    font-size:22px;
     font-weight:bold;
     color:white;
     text-decoration:none;
-    border-radius:12px;
+    border-radius:15px;
     transition:0.2s ease;
     backdrop-filter: blur(4px);
 }
 
 /* DonationAlerts */
 .da{
-    background: linear-gradient(45deg,#ff6a00,#ffb300);
-    box-shadow: 0 0 20px rgba(255,140,0,0.8);
+    background:linear-gradient(45deg,#ff6a00,#ffb300);
+    box-shadow:0 0 20px rgba(255,140,0,0.8);
 }
 
 /* DonatePay */
 .dp{
-    background: linear-gradient(45deg,#7b2ff7,#c471ed);
+    background:linear-gradient(45deg,#7b2ff7,#c471ed);
     box-shadow:0 0 20px rgba(170,0,255,0.8);
 }
 
 /* Эффект наведения */
 .btn:hover{
-    transform: scale(1.08);
+    transform:scale(1.08);
 }
 
 /* Эффект нажатия */
 .btn:active{
-    transform: scale(0.95);
-}
-
-/* Текст поверх картинки */
-.overlay-text {
-    position: absolute;
-    top: 5%;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 28px;
-    text-shadow: 0 0 10px black;
-    font-weight: bold;
+    transform:scale(0.95);
 }
 </style>
 </head>
-<body>
 
-<div class="overlay-text">
-    Поддержи стримера <span style="color:#ff6a00;">chip3625</span>!
-</div>
+<body>
 
 <div class="buttons">
     <a href="https://www.donationalerts.com/r/mrsaxar_" target="_blank" class="btn da">
