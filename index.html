@@ -38,16 +38,16 @@ body::before {
 .main {
     position: relative;
     z-index: 1;
-    margin-top: 180px; /* опустили кнопки ниже */
+    margin-top: 240px; /* БЫЛО 180px — стало ниже */
     display: flex;
-    flex-direction: column; /* В СТОЛБИК */
+    flex-direction: column;
     align-items: center;
 }
 
 .button {
     width: 260px;
     padding: 18px;
-    margin: 15px 0;
+    margin: 18px 0;
     font-size: 20px;
     font-weight: bold;
     border-radius: 10px;
@@ -72,10 +72,10 @@ body::before {
 .footer {
     position: relative;
     z-index: 1;
-    margin-bottom: 60px; /* чуть ниже */
-    font-size: 28px; /* больше */
+    margin-bottom: 100px; /* было 60px — опустили ниже */
+    font-size: 30px;
     font-weight: bold;
-    color: #9146FF; /* Twitch фиолетовый */
+    color: #9146FF;
     text-shadow: 0 0 15px rgba(145,70,255,0.8);
 }
 </style>
