@@ -3,122 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chip3625</title>
+<title>Chip3625</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    color: white;
-
-    background: url("background.png") no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed; /* эффект глубины */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-/* затемнение */
-body::before {
+/* Фон */
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url("background.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+/* Затемнение */
+.background::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 0;
+    background: rgba(0,0,0,0.35);
 }
 
-.main {
-    position: relative;
-    z-index: 1;
-    margin-top: 320px;
+/* Контейнер кнопок */
+.buttons {
+    position: absolute;
+    top: 55%; /* уровень бронежилета */
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    animation: fadeInUp 1.2s ease forwards;
-    opacity: 0;
-}
-
-/* Плавное появление */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    gap: 30px;
+    z-index: 2;
 }
 
 /* Кнопки */
-.button {
-    width: 270px;
-    padding: 20px;
-    margin: 20px 0;
-    font-size: 21px;
+.btn {
+    padding: 18px 35px;
+    font-size: 20px;
     font-weight: bold;
     border-radius: 12px;
     text-decoration: none;
     color: white;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
-/* Неоновые цвета */
+/* DonationAlerts */
 .da {
     background: #ff6a00;
     box-shadow: 0 0 15px #ff6a00;
 }
 
+/* DonatePay */
 .dp {
     background: #8a2be2;
     box-shadow: 0 0 15px #8a2be2;
 }
 
 /* Hover эффект */
-.button:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 25px white;
-    opacity: 0.9;
-}
-
-/* Twitch текст */
-.footer {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 140px;
-    font-size: 32px;
-    font-weight: bold;
-    color: #9146FF;
-    text-shadow: 0 0 18px rgba(145,70,255,0.9);
-    animation: glow 2s infinite alternate;
-}
-
-/* Пульсирование Twitch текста */
-@keyframes glow {
-    from { text-shadow: 0 0 10px #9146FF; }
-    to { text-shadow: 0 0 25px #c084ff; }
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="main">
-    <a href="https://www.donationalerts.com/r/mrsaxar_" target="_blank" class="button da">
-        DonationAlerts
-    </a>
+<div class="background">
 
-    <a href="https://donatepay.eu/don/39957" target="_blank" class="button dp">
-        DonatePay
-    </a>
-</div>
+    <div class="buttons">
+        <a href="https://www.donationalerts.com/r/mrsaxar_" target="_blank" class="btn da">
+            DonationAlerts
+        </a>
 
-<div class="footer">
-    🎮 Twitch chip3625
+        <a href="https://donatepay.eu/don/39957" target="_blank" class="btn dp">
+            DonatePay
+        </a>
+    </div>
+
 </div>
 
 </body>
